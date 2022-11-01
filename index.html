@@ -84,6 +84,13 @@
   <div class="filter"></div>
   <canvas id="canvas" width="1920px" height="1080px"></canvas>
   <div class="clock"></div>
+	
+	<audio id="audio" autoplay muted>
+		<source src="horse.ogg" type="audio/ogg">
+		<source src="horse.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<button id="unmuteButton"></button>
  
 
   
@@ -252,10 +259,15 @@
 	
 	<!-- Embed audio Tag -->
 	<script>
+  unmuteButton.addEventListener('click', function() {
+    audio.muted = false;
+  });
+</script>
+<!-- 	<script>
 		document.getElementById("canvas").click();
 		var audio = new Audio('baarish.mp3');
 		audio.play();
-	</script>
+	</script> -->
 	
   </body>
 </html>
