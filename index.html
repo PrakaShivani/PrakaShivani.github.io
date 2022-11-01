@@ -108,7 +108,7 @@
   <canvas id="canvas" width="1920px" height="1080px"></canvas>
   <div class="clock"></div>
 	
-	<audio id="audio" autoplay muted>
+	<audio id="audio" autoplay>
 		<source src="baarish.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
@@ -308,12 +308,12 @@
 					if(state == 'paused') {
 						state = "playing";
 						$("#circle").attr("class", "play");
-						$("#audio).play();
+						$("#audio).trigger('play');
 						$("#from_pause_to_play")[0].beginElement();
 					} else {
 						state = "paused";
 						$("#circle").attr("class", "");
-						$("#audio).pause();
+						$("#audio).trigger('pause');
 						$("#from_play_to_pause")[0].beginElement();
 					}
 				});
