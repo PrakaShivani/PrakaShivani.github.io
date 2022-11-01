@@ -308,12 +308,12 @@
 					if(state == 'paused') {
 						state = "playing";
 						$("#circle").attr("class", "play");
-						$("#audio).trigger('play');
+						$("#audio").trigger('play');
 						$("#from_pause_to_play")[0].beginElement();
 					} else {
 						state = "paused";
 						$("#circle").attr("class", "");
-						$("#audio).trigger('pause');
+						$("#audio").trigger('pause');
 						$("#from_play_to_pause")[0].beginElement();
 					}
 				});
