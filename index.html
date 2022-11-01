@@ -86,8 +86,7 @@
   <div class="clock"></div>
 	
 	<audio id="audio" autoplay muted>
-		<source src="horse.ogg" type="audio/ogg">
-		<source src="horse.mp3" type="audio/mpeg">
+		<source src="baarish.mp3" type="audio/mpeg">
 		Your browser does not support the audio element.
 	</audio>
 	<button id="unmuteButton"></button>
@@ -262,6 +261,7 @@
   unmuteButton.addEventListener('click', function() {
     audio.muted = false;
   });
+document.getElementById("unmuteButton").click();
 </script>
 <!-- 	<script>
 		document.getElementById("canvas").click();
