@@ -4,7 +4,7 @@
 
   <meta charset="UTF-8">
 
-  <title>PrakaShivani</title>
+  <title>Prakash &#x1F493; Shivani</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.css">
   
@@ -13,6 +13,39 @@
 			background: #e31b6d9c;
 			background: black;
 			overflow: hidden;
+		}
+		
+		html,
+		body {
+		  margin: 0;
+		  overflow: hidden;
+		  width: 100%;
+		  height: 100%;
+		  cursor: none;
+		  background: black;
+		  background: linear-gradient(to bottom, #000000 0%, #5788fe 100%);
+		}
+		
+		.filter {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  background:  #fe5757;
+		  animation: colorChange 30s ease-in-out infinite;
+		  animation-fill-mode: both;
+		  mix-blend-mode: overlay;
+		}
+		
+		@keyframes colorChange {
+		  0%,
+		  100% {
+		    opacity: 0;
+		  }
+		  50% {
+		    opacity: .9;
+		  }
 		}
 		
 		.clock {
@@ -48,6 +81,7 @@
 
 <body translate="no" onresize="_pexresize()">
   
+	<div class="filter"></div>
   <canvas id="canvas" width="1920px" height="1080px"></canvas>
   <div class="clock"></div>
   
