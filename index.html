@@ -65,10 +65,14 @@
 			color: white !important;
 		}
 		
-		svg {
+		#play {
 			padding-top: 10vh;
 			margin: 0px auto;
 			display: block;
+			position: absolute;
+			top: 7vh;
+			left: 50%;
+			transform: translateX(-50%);
 		}
 
 		/* This animates the circle when it switches to play */
@@ -113,7 +117,7 @@
         Your browser does not support the audio element.
     </audio>
 
-    <svg width="104" height="104" id='pause'>
+    <svg width="104" height="104" id='play'>
         <circle id="circle" cx="51" cy="51" r="50" stroke-dasharray="314" class="play" stroke-dashoffset="0" style="stroke-width:2px;stroke:white;" />
         <line id='line1' x1="38" y1="30" x2="38" y2="70" style="stroke-width:4px;stroke:white;stroke-linecap: round;" />
         <path id='line2' d="M 66 30 L 66 50 L 66 70" rx="10" ry="10" style="stroke-width:4px;stroke:white;fill:white;stroke-linejoin: round;stroke-linecap: round;">
@@ -304,14 +308,14 @@
 		<script>	
 			$(document).ready(function() {
 				var state = "paused";
-				$('#pause').on('click', function() {
+				$('#play').on('click', function() {
 					if(state == 'paused') {
-						state = "paused";
+						state = "playing";
 						$("#circle").attr("class", "");
 						$("#audio").trigger('play');
 						$("#from_play_to_pause")[0].beginElement();
 					} else {
-						state = "playing";
+						state = "paused";
 						$("#circle").attr("class", "play");
 						$("#audio").trigger('pause');
 						$("#from_pause_to_play")[0].beginElement();
