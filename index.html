@@ -307,6 +307,8 @@
 	
 	<!-- Embed audio Tag & it's functionalities -->
 		<script>
+			var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', 'middle_of_the_night', 'need_ur_love', 'harleys', 'dandelions', 'light_switch', 'tie_me_down', ''];
+			
 			function getRandomInt(min, max) {
 				min = Math.ceil(min);
   			max = Math.floor(max);
@@ -315,17 +317,16 @@
 			
 			function playTrack(index){
 				index = getRandomInt(1, 10);
-				audio.src = tracksFolder + audionamesarray[index];
+				audio.src = tracksFolder + audioTracksList[index];
 				audio.play();
 			}
-			
-			var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', 'middle_of_the_night', 'need_ur_love', 'harleys', 'dandelions', 'light_switch', 'tie_me_down', ''];
 			
 			$(document).ready(function() {
 				var state = "paused",
 						audio = $('#audio'),
 						tracksFolder = 'tracks/',
 						index = getRandomInt(0, 10);
+				
 				$('#play').on('click', function() {
 					if(state == 'paused') {
 						playTrack(index);
@@ -341,7 +342,6 @@
 					}
 				});
 				
-				
 				$('#audio')[0].onended = function() {
 					<!-- Reset Play button animation on Audio End -->
 					state = "paused";
@@ -350,7 +350,7 @@
 					
 					
 // 					if(index < audioTracksList.length){
-//             audio.src= audionamesarray[index];
+//             audio.src= audioTracksList[index];
 //             audio.play();
 //             index++;
 // 					}
