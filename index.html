@@ -356,8 +356,9 @@
 // 					state = "paused";
 // 					$("#circle").attr("class", "play");
 // 					$("#from_pause_to_play")[0].beginElement();
-					
-					playTrack();
+					setTimeout(function() {
+						playTrack();
+					}, 10)
 					
 // 					if(index < audioTracksList.length){
 //             audio.src= audioTracksList[index];
