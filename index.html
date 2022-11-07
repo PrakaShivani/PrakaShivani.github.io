@@ -114,7 +114,7 @@
   <div class="clock"></div>
 	
 	<audio id="audio" autoplay loop>
-        <source id="a_track" src="baarish.mp3" type="audio/mpeg">
+        <source id="a_track" src="tracks/baarish.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -316,7 +316,8 @@
 			var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', '', '', '', '', '', '', ''];
 			$(document).ready(function() {
 				var state = "paused",
-						audio = $('#audio'),
+						audio = $('#audio'),,
+						tracksFolder = 'tracks/',
 						index = getRandomInt(0, 4);
 				$('#play').on('click', function() {
 					if(state == 'paused') {
@@ -341,7 +342,7 @@
 					
 					<!--  -->
 					index = getRandomInt(0, 4);
-					audio.src= audionamesarray[index];
+					audio.src = tracksFolder + audionamesarray[index];
           audio.play();
 					
 // 					if(index < audioTracksList.length){
