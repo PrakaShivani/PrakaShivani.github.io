@@ -113,8 +113,8 @@
   <canvas id="canvas" width="1920px" height="1080px"></canvas>
   <div class="clock"></div>
 	
-	<audio id="audio" autoplay>
-        <source src="baarish.mp3" type="audio/mpeg">
+	<audio id="audio" autoplay loop>
+        <source id="a_track" src="baarish.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -305,24 +305,53 @@
   </script>
   
 	
-	<!-- Embed audio Tag -->
-		<script>	
+	<!-- Embed audio Tag & it's functionalities -->
+		<script>
+			function getRandomInt(min, max) {
+				min = Math.ceil(min);
+  			max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+			}
+			
+			var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', '', '', '', '', '', '', ''];
 			$(document).ready(function() {
-				var state = "paused";
+				var state = "paused",
+						audio = $('#audio'),
+						index = getRandomInt(0, 4);
 				$('#play').on('click', function() {
 					if(state == 'paused') {
 						state = "playing";
 						$("#circle").attr("class", "");
-						$("#audio").trigger('play');
+						audio.trigger('play');
 						$("#from_play_to_pause")[0].beginElement();
 					} else {
 						state = "paused";
 						$("#circle").attr("class", "play");
-						$("#audio").trigger('pause');
+						audio.trigger('pause');
 						$("#from_pause_to_play")[0].beginElement();
-						
 					}
 				});
+				
+				
+				$('#audio')[0].onended = function() {
+					<!-- Reset Play button animation on Audio End -->
+					state = "paused";
+					$("#circle").attr("class", "play");
+					$("#from_pause_to_play")[0].beginElement();
+					
+					<!--  -->
+					index = getRandomInt(0, 4);
+					audio.src= audionamesarray[index];
+          audio.play();
+					
+// 					if(index < audioTracksList.length){
+//             audio.src= audionamesarray[index];
+//             audio.play();
+//             index++;
+// 					}
+					
+				}
+				
 			});
 			
 		</script>
