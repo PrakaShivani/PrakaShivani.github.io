@@ -158,7 +158,7 @@
       let currentDate = new Date();
 
       // Target future date/24 hour time/Timezone
-      let targetDate = moment.tz("2023-2-8 23:59", "Asia/Kolkata");
+      let targetDate = new Date("2023-2-8 23:59:59");
 
       // Calculate the difference in seconds between the future and current date
       let diff = targetDate / 1000 - currentDate.getTime() / 1000;
