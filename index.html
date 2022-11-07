@@ -114,7 +114,7 @@
   <div class="clock"></div>
 	
 	<audio id="audio" autoplay>
-        <source id="a_track" src="tracks/baarish.mp3" type="audio/mpeg">
+        <source id="a_track" src="tracks/tmpyar.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -310,7 +310,7 @@
 			
 			$(document).ready(function() {
 				var state = "paused",
-						audio = $('#audio'),
+						audio = new Audio('tmpyar.mp3');
 						playCount = 0;
 				
 				var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', 'middle_of_the_night', 'need_ur_love', 'harleys', 'dandelions', 'light_switch', 'tie_me_down', ''],
@@ -323,16 +323,15 @@
 					return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 				}
 
-				function playTrack(index=getRandomInt(1, 10)){
+				function playTrack(index=getRandomInt(0, 10)){
 					audio.src = tracksFolder + audioTracksList[index] + format;
 					audio.play();
-					play(true);
+					play();
 				}
 
-				function play(bool) {
+				function play() {
 					state = "playing";
 					$("#circle").attr("class", "");
-					!bool ? audio.play() : '';
 					$("#from_play_to_pause")[0].beginElement();
 				}
 
@@ -345,11 +344,8 @@
 
 				$('#play').on('click', function() {
 					if(state == 'paused') {
+						audio.play();
 						play();
-						if(playCount == 0){
-							playCount++;
-// 							playTrack();
-						}
 					} else {
 						pause();
 					}
