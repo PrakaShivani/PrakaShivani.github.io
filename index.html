@@ -307,46 +307,50 @@
 	
 	<!-- Embed audio Tag & it's functionalities -->
 		<script>
-			var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', 'middle_of_the_night', 'need_ur_love', 'harleys', 'dandelions', 'light_switch', 'tie_me_down', ''],
-					tracksFolder = 'tracks/',
-					format = '.mp3';
-			
-			function getRandomInt(min, max) {
-				min = Math.ceil(min);
-  			max = Math.floor(max);
-				return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-			}
-			
-			function playTrack(index){
-				index = getRandomInt(1, 10);
-				audio.src = tracksFolder + audioTracksList[index] + format;
-				audio.play();
-				play();
-			}
-			
-			function play() {
-				state = "playing";
-				$("#circle").attr("class", "");
-				audio.trigger('play');
-				$("#from_play_to_pause")[0].beginElement();
-			}
-			
-			function pause() {
-				state = "paused";
-				$("#circle").attr("class", "play");
-				audio.trigger('pause');
-				$("#from_pause_to_play")[0].beginElement();
-			}
 			
 			$(document).ready(function() {
 				var state = "paused",
 						audio = $('#audio'),
-						index = getRandomInt(0, 10);
+						playCount = 0;
 				
+				var audioTracksList = ['baarish', 'dhoop', 'pppyar', 'tmpyar', 'middle_of_the_night', 'need_ur_love', 'harleys', 'dandelions', 'light_switch', 'tie_me_down', ''],
+					tracksFolder = 'tracks/',
+					format = '.mp3';
+			
+				function getRandomInt(min, max) {
+					min = Math.ceil(min);
+					max = Math.floor(max);
+					return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+				}
+
+				function playTrack(index=getRandomInt(1, 10)){
+					audio.src = tracksFolder + audioTracksList[index] + format;
+// 					audio.play();
+					play();
+				}
+
+				function play() {
+					state = "playing";
+					$("#circle").attr("class", "");
+					audio.trigger('play');
+					$("#from_play_to_pause")[0].beginElement();
+				}
+
+				function pause() {
+					state = "paused";
+					$("#circle").attr("class", "play");
+					audio.trigger('pause');
+					$("#from_pause_to_play")[0].beginElement();
+				}
+
+				playTrack();
 				$('#play').on('click', function() {
 					if(state == 'paused') {
-						playTrack(index);
 						play();
+						if(playCount == 0){
+							playCount++;
+// 							playTrack();
+						}
 					} else {
 						pause();
 					}
