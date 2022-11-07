@@ -325,14 +325,14 @@
 
 				function playTrack(index=getRandomInt(1, 10)){
 					audio.src = tracksFolder + audioTracksList[index] + format;
-// 					audio.play();
-					play();
+					audio.play();
+					play(false);
 				}
 
-				function play() {
+				function play(bool) {
 					state = "playing";
 					$("#circle").attr("class", "");
-					audio.trigger('play');
+					bool ? audio.trigger('play') : '';
 					$("#from_play_to_pause")[0].beginElement();
 				}
 
