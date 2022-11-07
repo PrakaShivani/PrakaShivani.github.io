@@ -317,37 +317,48 @@
 			
 			function playTrack(index){
 				index = getRandomInt(1, 10);
-				audio.src = tracksFolder + audioTracksList[index];
+				audio.src = tracksFolder + audioTracksList[index] + format;
 				audio.play();
+				play();
+			}
+			
+			function play() {
+				state = "playing";
+				$("#circle").attr("class", "");
+				audio.trigger('play');
+				$("#from_play_to_pause")[0].beginElement();
+			}
+			
+			function pause() {
+				state = "paused";
+				$("#circle").attr("class", "play");
+				audio.trigger('pause');
+				$("#from_pause_to_play")[0].beginElement();
 			}
 			
 			$(document).ready(function() {
 				var state = "paused",
 						audio = $('#audio'),
 						tracksFolder = 'tracks/',
+						format = '.mp3';
 						index = getRandomInt(0, 10);
 				
 				$('#play').on('click', function() {
 					if(state == 'paused') {
 						playTrack(index);
-						state = "playing";
-						$("#circle").attr("class", "");
-						audio.trigger('play');
-						$("#from_play_to_pause")[0].beginElement();
+						play();
 					} else {
-						state = "paused";
-						$("#circle").attr("class", "play");
-						audio.trigger('pause');
-						$("#from_pause_to_play")[0].beginElement();
+						pause();
 					}
 				});
 				
 				$('#audio')[0].onended = function() {
 					<!-- Reset Play button animation on Audio End -->
-					state = "paused";
-					$("#circle").attr("class", "play");
-					$("#from_pause_to_play")[0].beginElement();
+// 					state = "paused";
+// 					$("#circle").attr("class", "play");
+// 					$("#from_pause_to_play")[0].beginElement();
 					
+					playTrack()
 					
 // 					if(index < audioTracksList.length){
 //             audio.src= audioTracksList[index];
