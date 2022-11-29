@@ -66,11 +66,11 @@
 		}
 		
 		#play {
-			padding-top: 10vh;
+			padding-top: 2vh;
 			margin: 0px auto;
 			display: block;
 			position: absolute;
-			top: 7vh;
+			top: 15vh;
 			left: 50%;
 			cursor: pointer;
 			transform: translateX(-50%);
@@ -96,6 +96,20 @@
 			cursor: pointer;
 			transform: translateX(-55%);
 		}
+		
+		#refresh_song circle {
+    transition: all .6s ease-in;
+    animation: stroker 5s ease-in 2s infinite forwards;
+}
+
+@keyframes stroker {
+  0%   {stroke:#fff; stroke-dasharray: 0px; stroke-width: 3px;}
+  20%  {stroke:red; stroke-dasharray: 25px; stroke-width: 4px;}
+  40%  {stroke:#purple; stroke-dasharray: 50px; stroke-width: 6px;}
+  60%  {stroke:#orange; stroke-dasharray: 100px; stroke-width: 5px;}
+  80%  {stroke:pink; stroke-dasharray: 200px; stroke-width: 4px;}
+  100% {stroke:#fff; stroke-dasharray: 400px; stroke-width: 3px;}
+}
 		
   </style>
 
