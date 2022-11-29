@@ -104,11 +104,12 @@
 }
 		
 		#refresh_song path {
+			transition: transform .3s ease-in;
 			animation: stroker1 5s ease-in 2s infinite forwards;
 		}
 		
 		#refresh_song:hover path {
-    scale3d(1.1, 1.1, 1.1) translate3d(-6px, -6px, -6px)
+    	transform: scale3d(1.1, 1.1, 1.1) translate3d(-6px, -6px, -6px)
 }
 
 @keyframes stroker {
